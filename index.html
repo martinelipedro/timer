@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eu&você</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+        }
+        
+        .timer-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+        
+        .timer-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timer-title {
+            font-size: 1.8em;
+            font-weight: bolder;
+            color: #444;
+            margin-bottom: 10px;
+            margin-bottom: 3em;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .timer-value {
+            font-size: 25px;
+            font-family: 'Courier New', monospace;
+            color: #2c3e50;
+            font-weight: bold;
+            line-height: 1.6;
+            display: flex;
+            gap: 7em;
+            justify-content: center;
+        }
+
+        .time-col {
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .time-unit {
+            display: inline-block;
+            min-width: 120px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            margin: 20px;
+            line-height: 1.2;
+            margin-top: 30px;
+            
+        }
+        
+        .timer-box:nth-child(1) {
+            border-left: 5px solid #e74c3c;
+        }
+        
+        .timer-box:nth-child(2) {
+            border-left: 5px solid #3498db;
+        }
+        
+        .timer-box:nth-child(3) {
+            border-left: 5px solid #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <h1>eu&você</h1>
+    
+    <div class="timer-container">
+        <div class="timer-box">
+            <div class="timer-title">29/06/2024</div>
+            <div class="timer-value" id="timer1">
+                <span class="time-unit">0 anos</span>
+                <span class="time-unit">0 meses</span>
+                <span class="time-unit">0 dias</span>
+                <span class="time-unit">0 horas</span>
+            </div>
+        </div>
+        
+        <div class="timer-box">
+            <div class="timer-title">31/07/2024</div>
+            <div class="timer-value" id="timer2">
+                <span class="time-unit">0 anos</span>
+                <span class="time-unit">0 meses</span>
+                <span class="time-unit">0 dias</span>
+                <span class="time-unit">0 horas</span>
+            </div>
+        </div>
+        
+        <div class="timer-box">
+            <div class="timer-title">14/09/2024</div>
+            <div class="timer-value" id="timer3">
+                <span class="time-unit">0 anos</span>
+                <span class="time-unit">0 meses</span>
+                <span class="time-unit">0 dias</span>
+                <span class="time-unit">0 horas</span>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Target dates
+    const startDates = [
+        new Date('2024-06-29T00:00:00'), // June 29, 2024
+        new Date('2024-07-31T00:00:00'), // July 31, 2024
+        new Date('2024-09-14T00:00:00')   // September 14, 2024
+    ];
+    
+    // Timer elements
+    const timers = [
+        document.getElementById('timer1'),
+        document.getElementById('timer2'),
+        document.getElementById('timer3')
+    ];
+    
+    function calculateTimeDifference(startDate, currentDate) {
+        let years = currentDate.getFullYear() - startDate.getFullYear();
+        let months = currentDate.getMonth() - startDate.getMonth();
+        let days = currentDate.getDate() - startDate.getDate();
+        let hours = currentDate.getHours() - startDate.getHours();
+        let minutes = currentDate.getMinutes() - startDate.getMinutes();
+        let seconds = currentDate.getSeconds() - startDate.getSeconds();
+        
+        // Adjust for negative months
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+        
+        // Adjust for negative days
+        if (days < 0) {
+            months--;
+            // Get the last day of the previous month
+            const tempDate = new Date(currentDate);
+            tempDate.setMonth(tempDate.getMonth(), 0);
+            days += tempDate.getDate();
+        }
+        
+        // Adjust for negative hours
+        if (hours < 0) {
+            days--;
+            hours += 24;
+        }
+        
+        // Adjust for negative minutes
+        if (minutes < 0) {
+            hours--;
+            minutes += 60;
+        }
+        
+        // Adjust for negative seconds
+        if (seconds < 0) {
+            minutes--;
+            seconds += 60;
+        }
+        
+        return { years, months, days, hours, minutes, seconds };
+    }
+    
+    function updateTimers() {
+        const now = new Date();
+        
+        for (let i = 0; i < startDates.length; i++) {
+            const { years, months, days, hours, minutes, seconds } = calculateTimeDifference(startDates[i], now);
+            
+            // Update timer display
+            const timer = timers[i];
+            timer.innerHTML = `
+                <span class="time-col">
+                  <span class="time-unit">${years} <br/> ${years !== 1 ? 'anos' : 'ano'}</span>
+                  <span class="time-unit">${months} <br/> ${months !== 1 ? 'meses' : 'mês'}</span>
+                  <span class="time-unit">${days} <br/> ${days !== 1 ? 'dias' : 'dia'}</span>
+                </span>
+                <span class="time-col">
+                  <span class="time-unit">${hours} <br/> ${hours !== 1 ? 'horas' : 'hora'}</span>
+                  <span class="time-unit">${minutes}<br/>  ${minutes !== 1 ? 'minutos' : 'minuto'}</span>
+                  <span class="time-unit">${seconds} <br/> ${seconds !== 1 ? 'segundos' : 'segundo'}</span>
+                </span>
+            `;
+        }
+    }
+    
+    // Update timers immediately and then every second
+    updateTimers();
+    setInterval(updateTimers, 1000); // Update every second (1000 ms)
+</script>
+</body>
+</html>
