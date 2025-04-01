@@ -53,8 +53,7 @@
             font-weight: bold;
             line-height: 1.6;
             display: flex;
-            gap: 7em;
-            justify-content: center;
+            justify-content: space-evenly;
         }
 
         .time-col {
@@ -124,14 +123,12 @@
     </div>
 
 <script>
-    // Target dates
     const startDates = [
-        new Date('2024-06-29T00:00:00'), // June 29, 2024
-        new Date('2024-07-31T00:00:00'), // July 31, 2024
-        new Date('2024-09-14T00:00:00')   // September 14, 2024
+        new Date('2024-06-29T00:00:00'), 
+        new Date('2024-07-31T00:00:00'), 
+        new Date('2024-09-14T00:00:00')   
     ];
     
-    // Timer elements
     const timers = [
         document.getElementById('timer1'),
         document.getElementById('timer2'),
@@ -146,34 +143,28 @@
         let minutes = currentDate.getMinutes() - startDate.getMinutes();
         let seconds = currentDate.getSeconds() - startDate.getSeconds();
         
-        // Adjust for negative months
         if (months < 0) {
             years--;
             months += 12;
         }
         
-        // Adjust for negative days
         if (days < 0) {
             months--;
-            // Get the last day of the previous month
             const tempDate = new Date(currentDate);
             tempDate.setMonth(tempDate.getMonth(), 0);
             days += tempDate.getDate();
         }
         
-        // Adjust for negative hours
         if (hours < 0) {
             days--;
             hours += 24;
         }
         
-        // Adjust for negative minutes
         if (minutes < 0) {
             hours--;
             minutes += 60;
         }
         
-        // Adjust for negative seconds
         if (seconds < 0) {
             minutes--;
             seconds += 60;
@@ -188,7 +179,6 @@
         for (let i = 0; i < startDates.length; i++) {
             const { years, months, days, hours, minutes, seconds } = calculateTimeDifference(startDates[i], now);
             
-            // Update timer display
             const timer = timers[i];
             timer.innerHTML = `
                 <span class="time-col">
@@ -205,9 +195,8 @@
         }
     }
     
-    // Update timers immediately and then every second
     updateTimers();
-    setInterval(updateTimers, 1000); // Update every second (1000 ms)
+    setInterval(updateTimers, 1000); 
 </script>
 </body>
 </html>
