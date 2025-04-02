@@ -183,12 +183,13 @@
             timer.innerHTML = `
                 <span class="time-col">
                   <span class="time-unit">${years} <br/> ${years !== 1 ? 'anos' : 'ano'}</span>
-                  <span class="time-unit">${months} <br/> ${months !== 1 ? 'meses' : 'mês'}</span>
                   <span class="time-unit">${days} <br/> ${days !== 1 ? 'dias' : 'dia'}</span>
+                  <span class="time-unit">${minutes}<br/>  ${minutes !== 1 ? 'minutos' : 'minuto'}</span>
+
                 </span>
                 <span class="time-col">
+                  <span class="time-unit">${months} <br/> ${months !== 1 ? 'meses' : 'mês'}</span>
                   <span class="time-unit">${hours} <br/> ${hours !== 1 ? 'horas' : 'hora'}</span>
-                  <span class="time-unit">${minutes}<br/>  ${minutes !== 1 ? 'minutos' : 'minuto'}</span>
                   <span class="time-unit">${seconds} <br/> ${seconds !== 1 ? 'segundos' : 'segundo'}</span>
                 </span>
             `;
