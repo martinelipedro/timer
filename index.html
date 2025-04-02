@@ -121,6 +121,9 @@
         .timer-box:nth-child(3) {
             border-left: 5px solid #ec7063
         }
+        .timer-box:nth-child(4) {
+            border-left: 5px solid #e64a19
+        }
     </style>
 </head>
 <body>
@@ -158,6 +161,17 @@
         </div>
     </div>
 
+    <div class="timer-box" onclick="toggleBox(this)">
+            <div class="timer-title">16/03/2025</div>
+            <div class="timer-value" id="timer4"></div>
+            <div class="timer-content">
+                <p></p>
+                <hr>
+                <p>Meu amor entrou na minha loucura de ir ao cinema com um cooler de 50L pra encher com 10L de pipoca. Foi INCRÍVEL. Mesmo a tensão do filme - eu facilmente sequestraria uma velhinha por massagem.</p>
+            </div>
+        </div>
+    </div>
+
 <script>
     function toggleBox(box) {
         box.classList.toggle('active');
@@ -168,9 +182,10 @@
         const startDates = [
             new Date('2024-06-29T19:07:00'),
             new Date('2024-07-31T17:20:00'),
-            new Date('2024-09-14T21:30:00')
+            new Date('2024-09-14T21:30:00'),
+            new Date('2025-03-16T15:30:00')
         ];
-        const timers = ['timer1', 'timer2', 'timer3'];
+        const timers = ['timer1', 'timer2', 'timer3', 'timer4'];
 
         timers.forEach((id, index) => {
             const diff = Math.max(0, Math.floor((now - startDates[index]) / 1000));
