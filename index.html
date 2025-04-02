@@ -34,13 +34,15 @@
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            overflow: hidden;
         }
         
         .timer-title {
             font-size: 1.8em;
             font-weight: bolder;
             color: #444;
-            margin-bottom: 10px;
             margin-bottom: 3em;
             display: flex;
             justify-content: center;
@@ -57,8 +59,8 @@
         }
 
         .time-col {
-          display: flex;
-          flex-direction: column;
+            display: flex;
+            flex-direction: column;
         }
         
         .time-unit {
@@ -71,7 +73,28 @@
             margin: 20px;
             line-height: 1.2;
             margin-top: 30px;
-            
+        }
+        
+        .timer-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            padding: 0 20px;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .timer-box.active {
+            padding-bottom: 30px;
+        }
+        
+        .timer-box.active .timer-content {
+            max-height: 500px;
+            opacity: 1;
+            padding: 20px 20px 0 20px;
+            margin-top: 20px;
+            border-top: 1px solid #eee;
         }
         
         .timer-box:nth-child(1) {
@@ -91,33 +114,63 @@
     <h1>eu&você</h1>
     
     <div class="timer-container">
-        <div class="timer-box">
+        <div class="timer-box" onclick="toggleBox(this)">
             <div class="timer-title">29/06/2024</div>
             <div class="timer-value" id="timer1">
-                <span class="time-unit">0 anos</span>
-                <span class="time-unit">0 meses</span>
-                <span class="time-unit">0 dias</span>
-                <span class="time-unit">0 horas</span>
+                <span class="time-col">
+                    <span class="time-unit">0 <br/> anos</span>
+                    <span class="time-unit">0 <br/> dias</span>
+                    <span class="time-unit">0 <br/> minutos</span>
+                </span>
+                <span class="time-col">
+                    <span class="time-unit">0 <br/> meses</span>
+                    <span class="time-unit">0 <br/> horas</span>
+                    <span class="time-unit">0 <br/> segundos</span>
+                </span>
+            </div>
+            <div class="timer-content">
+                <p>Nunca fui tão feliz por dar um tchau; por ter olhado o celular do nada e por ter tido a sorte de te encontrar naquele corredor.</p>
+                <p><></p>
             </div>
         </div>
         
-        <div class="timer-box">
+        <div class="timer-box" onclick="toggleBox(this)">
             <div class="timer-title">31/07/2024</div>
             <div class="timer-value" id="timer2">
-                <span class="time-unit">0 anos</span>
-                <span class="time-unit">0 meses</span>
-                <span class="time-unit">0 dias</span>
-                <span class="time-unit">0 horas</span>
+                <span class="time-col">
+                    <span class="time-unit">0 <br/> anos</span>
+                    <span class="time-unit">0 <br/> dias</span>
+                    <span class="time-unit">0 <br/> minutos</span>
+                </span>
+                <span class="time-col">
+                    <span class="time-unit">0 <br/> meses</span>
+                    <span class="time-unit">0 <br/> horas</span>
+                    <span class="time-unit">0 <br/> segundos</span>
+                </span>
+            </div>
+            <div class="timer-content">
+                <p>Flores de hibisco, dia conturbado, pipocas na escola que atraíram meu amor a descer do ônibus. Pena que eu fui lerdo demais pra ver a flor antes da Bibi.</p>
+                <p><></p>
             </div>
         </div>
         
-        <div class="timer-box">
+        <div class="timer-box" onclick="toggleBox(this)">
             <div class="timer-title">14/09/2024</div>
             <div class="timer-value" id="timer3">
-                <span class="time-unit">0 anos</span>
-                <span class="time-unit">0 meses</span>
-                <span class="time-unit">0 dias</span>
-                <span class="time-unit">0 horas</span>
+                <span class="time-col">
+                    <span class="time-unit">0 <br/> anos</span>
+                    <span class="time-unit">0 <br/> dias</span>
+                    <span class="time-unit">0 <br/> minutos</span>
+                </span>
+                <span class="time-col">
+                    <span class="time-unit">0 <br/> meses</span>
+                    <span class="time-unit">0 <br/> horas</span>
+                    <span class="time-unit">0 <br/> segundos</span>
+                </span>
+            </div>
+            <div class="timer-content">
+                <p>Aliança, RiR e a nossa primeira noite estrelada juntos. Nunca vou esquecer, do nervovismo, vontade e da voz chorosa do sim.</p>
+                <p><></p>
             </div>
         </div>
     </div>
@@ -143,11 +196,21 @@
         let minutes = currentDate.getMinutes() - startDate.getMinutes();
         let seconds = currentDate.getSeconds() - startDate.getSeconds();
         
-        if (months < 0) {
-            years--;
-            months += 12;
+        if (seconds < 0) {
+            minutes--;
+            seconds += 60;
         }
         
+        if (minutes < 0) {
+            hours--;
+            minutes += 60;
+        }
+
+        if (hours < 0) {
+            days--;
+            hours += 24;
+        }
+
         if (days < 0) {
             months--;
             const tempDate = new Date(currentDate);
@@ -155,19 +218,9 @@
             days += tempDate.getDate();
         }
         
-        if (hours < 0) {
-            days--;
-            hours += 24;
-        }
-        
-        if (minutes < 0) {
-            hours--;
-            minutes += 60;
-        }
-        
-        if (seconds < 0) {
-            minutes--;
-            seconds += 60;
+        if (months < 0) {
+            years--;
+            months += 12;
         }
         
         return { years, months, days, hours, minutes, seconds };
@@ -182,22 +235,25 @@
             const timer = timers[i];
             timer.innerHTML = `
                 <span class="time-col">
-                  <span class="time-unit">${years} <br/> ${years !== 1 ? 'anos' : 'ano'}</span>
-                  <span class="time-unit">${days} <br/> ${days !== 1 ? 'dias' : 'dia'}</span>
-                  <span class="time-unit">${minutes}<br/>  ${minutes !== 1 ? 'minutos' : 'minuto'}</span>
-
+                    <span class="time-unit">${years} <br/> ${years !== 1 ? 'anos' : 'ano'}</span>
+                    <span class="time-unit">${days} <br/> ${days !== 1 ? 'dias' : 'dia'}</span>
+                    <span class="time-unit">${minutes}<br/> ${minutes !== 1 ? 'minutos' : 'minuto'}</span>
                 </span>
                 <span class="time-col">
-                  <span class="time-unit">${months} <br/> ${months !== 1 ? 'meses' : 'mês'}</span>
-                  <span class="time-unit">${hours} <br/> ${hours !== 1 ? 'horas' : 'hora'}</span>
-                  <span class="time-unit">${seconds} <br/> ${seconds !== 1 ? 'segundos' : 'segundo'}</span>
+                    <span class="time-unit">${months} <br/> ${months !== 1 ? 'meses' : 'mês'}</span>
+                    <span class="time-unit">${hours} <br/> ${hours !== 1 ? 'horas' : 'hora'}</span>
+                    <span class="time-unit">${seconds} <br/> ${seconds !== 1 ? 'segundos' : 'segundo'}</span>
                 </span>
             `;
         }
     }
     
+    function toggleBox(box) {
+        box.classList.toggle('active');
+    }
+    
     updateTimers();
-    setInterval(updateTimers, 1000); 
+    setInterval(updateTimers, 1000);
 </script>
 </body>
 </html>
