@@ -235,71 +235,93 @@
             from {transform: scale(0.8);}
             to {transform: scale(1);}
         }
+
+        .area {
+            gap: 2em;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 2em;
+        }
+
+        .area-title {
+            font-family: 'Dancing Script', cursive;
+            color: #1a0a00; /* Esse altera todos os 'h1', que agora é o título */
+            margin-bottom: -0.5em;
+            font-size: 2em;
+        }
+        
     </style>
 </head>
 <body>
     <h1>Di Folco Martineli</h1>
     
     <div class="timer-container">
-        <div class="timer-box">
-            <div class="timer-title">29/06/2024</div>
-            <div class="timer-value" id="timer1"></div>
-            <div class="button-container">
-                <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
-                <button class="content-button" onclick="toggleContent(this, 'photo')">fotos</button>
+        <div class="area1 area">
+            <h2 class="area-title">aniversários</h2>
+            <div class="timer-box">
+                <div class="timer-title">29/06/2024</div>
+                <div class="timer-value" id="timer1"></div>
+                <div class="button-container">
+                    <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
+                    <button class="content-button" onclick="toggleContent(this, 'photo')">fotos</button>
+                </div>
+                <div class="timer-content">
+                    <p>Nunca fui tão feliz por dar um tchau; por ter olhado o celular do nada e por ter tido a sorte de te encontrar naquele corredor.</p>
+                    <hr>
+                    <p>Que bom que eu driblei o mau humor do meu pai pra ir embora e consegui aquele selinho do widmung. Mal posso esperar pela próxima festa junina com fotos e momentos só nossos.</p>
+                </div>
+                <div class="photo-content">
+                    <div class="photo-gallery">
+                        <img src="./291.jpg">
+                        <img src="./292.jpg">
+                    </div>
+                </div>
             </div>
-            <div class="timer-content">
-                <p>Nunca fui tão feliz por dar um tchau; por ter olhado o celular do nada e por ter tido a sorte de te encontrar naquele corredor.</p>
-                <hr>
-                <p>Que bom que eu driblei o mau humor do meu pai pra ir embora e consegui aquele selinho do widmung. Mal posso esperar pela próxima festa junina com fotos e momentos só nossos.</p>
+            
+            <div class="timer-box">
+                <div class="timer-title">31/07/2024</div>
+                <div class="timer-value" id="timer2"></div>
+                <div class="button-container">
+                    <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
+                    <button class="content-button" onclick="toggleContent(this, 'photo')">fotos</button>
+                </div>
+                <div class="timer-content">
+                    <p>Flores de hibisco, dia conturbado, pipocas na escola que atraíram meu amor a descer do ônibus. Pena que eu fui lerdo demais pra ver a flor antes da Bibi.</p>
+                    <hr>
+                    <p>Saltar no meio do nada pra te ver (pela pipoca) não foi uma decisão difícil, mas meu coração apertou quando você não me ouviu e pensei ser vergonha do Alpha. Hoje aperta, só que quentinho, a cada flor vermelha que cruza o meu caminho.</p>
+                </div>
+                <div class="photo-content">
+                    <div class="photo-gallery">
+                        <img src="">
+                        <img src="">
+                    </div>
+                </div>
             </div>
-            <div class="photo-content">
-                <div class="photo-gallery">
-                    <img src="./291.jpg">
-                    <img src="./292.jpg">
+            
+            <div class="timer-box">
+                <div class="timer-title">14/09/2024</div>
+                <div class="timer-value" id="timer3"></div>
+                <div class="button-container">
+                    <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
+                    <button class="content-button" onclick="toggleContent(this, 'photo')">fotos</button>
+                </div>
+                <div class="timer-content">
+                    <p>Aliança, RiR e a nossa primeira noite estrelada juntos. Nunca vou esquecer, do nervosismo, vontade e da voz chorosa do sim.</p>
+                    <hr>
+                    <p>Me senti uma princesa e descobri que posso chorar na sua frente. Obrigada pelas vivas faíscas que me mostrou um dia.</p>
+                </div>
+                <div class="photo-content">
+                    <div class="photo-gallery">
+                        <img src="">
+                        <img src="">
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="area2 area">
+        <h2 class="area-title">pra lembrar com carinho</h2>
         
-        <div class="timer-box">
-            <div class="timer-title">31/07/2024</div>
-            <div class="timer-value" id="timer2"></div>
-            <div class="button-container">
-                <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
-                <button class="content-button" onclick="toggleContent(this, 'photo')">fotos</button>
-            </div>
-            <div class="timer-content">
-                <p>Flores de hibisco, dia conturbado, pipocas na escola que atraíram meu amor a descer do ônibus. Pena que eu fui lerdo demais pra ver a flor antes da Bibi.</p>
-                <hr>
-                <p>Saltar no meio do nada pra te ver (pela pipoca) não foi uma decisão difícil, mas meu coração apertou quando você não me ouviu e pensei ser vergonha do Alpha. Hoje aperta, só que quentinho, a cada flor vermelha que cruza o meu caminho.</p>
-            </div>
-            <div class="photo-content">
-                <div class="photo-gallery">
-                    <img src="">
-                    <img src="">
-                </div>
-            </div>
-        </div>
-        
-        <div class="timer-box">
-            <div class="timer-title">14/09/2024</div>
-            <div class="timer-value" id="timer3"></div>
-            <div class="button-container">
-                <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
-                <button class="content-button" onclick="toggleContent(this, 'photo')">fotos</button>
-            </div>
-            <div class="timer-content">
-                <p>Aliança, RiR e a nossa primeira noite estrelada juntos. Nunca vou esquecer, do nervosismo, vontade e da voz chorosa do sim.</p>
-                <hr>
-                <p>Me senti uma princesa e descobri que posso chorar na sua frente. Obrigada pelas vivas faíscas que me mostrou um dia.</p>
-            </div>
-            <div class="photo-content">
-                <div class="photo-gallery">
-                    <img src="">
-                    <img src="">
-                </div>
-            </div>
-        </div>
 
         <div class="timer-box">
             <div class="timer-title">16/03/2025</div>
@@ -321,6 +343,7 @@
             </div>
         </div>
     </div>
+</div>
 
     <div id="lightbox" class="lightbox">
         <span class="close-lightbox">&times;</span>
