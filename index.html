@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Di Folco Martineli</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f5f5f5;
+            font-family: 'Poppins', Arial, sans-serif;
+            background-color: #FAF3E0;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -17,7 +19,8 @@
         }
         
         h1 {
-            color: #333;
+            color: #3E2723;
+            font-weight: 600;
             margin-bottom: 30px;
         }
         
@@ -30,32 +33,35 @@
         }
         
         .timer-box {
-            background-color: white;
-            border-radius: 10px;
+            background-color: #fff;
+            border-radius: 12px;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             overflow: hidden;
+        }
+
+        .timer-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
         
         .timer-title {
-            font-size: 1.8em;
-            font-weight: bolder;
-            color: #444;
-            margin-bottom: 3em;
-            display: flex;
-            justify-content: center;
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #5D4037;
+            text-align: center;
+            margin-bottom: 1.5em;
         }
         
         .timer-value {
-            font-size: 25px;
+            font-size: 22px;
             font-family: 'Courier New', monospace;
-            color: #2c3e50;
+            color: #37474F;
             font-weight: bold;
-            line-height: 1.6;
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-around;
         }
 
         .time-col {
@@ -64,25 +70,31 @@
         }
         
         .time-unit {
-            display: inline-block;
-            min-width: 120px;
+            min-width: 100px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             text-align: center;
-            margin: 20px;
+            margin: 15px;
             line-height: 1.2;
-            margin-top: 30px;
         }
         
         .timer-content {
             max-height: 0;
             opacity: 0;
             overflow: hidden;
-            transition: all 0.3s ease;
+            transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out;
             padding: 0 20px;
-            color: #555;
+            color: #6D4C41;
+            font-size: 16px;
             line-height: 1.6;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #D7CCC8;
+            margin: 20px 0;
         }
         
         .timer-box.active {
@@ -94,19 +106,19 @@
             opacity: 1;
             padding: 20px 20px 0 20px;
             margin-top: 20px;
-            border-top: 1px solid #eee;
+            border-top: 2px solid #D7CCC8;
         }
         
         .timer-box:nth-child(1) {
-            border-left: 5px solid #e74c3c;
+            border-left: 5px solid #D32F2F;
         }
         
         .timer-box:nth-child(2) {
-            border-left: 5px solid #3498db;
+            border-left: 5px solid #1976D2;
         }
         
         .timer-box:nth-child(3) {
-            border-left: 5px solid #2ecc71;
+            border-left: 5px solid #388E3C;
         }
     </style>
 </head>
@@ -116,18 +128,7 @@
     <div class="timer-container">
         <div class="timer-box" onclick="toggleBox(this)">
             <div class="timer-title">29/06/2024</div>
-            <div class="timer-value" id="timer1">
-                <span class="time-col">
-                    <span class="time-unit">0 <br/> anos</span>
-                    <span class="time-unit">0 <br/> dias</span>
-                    <span class="time-unit">0 <br/> minutos</span>
-                </span>
-                <span class="time-col">
-                    <span class="time-unit">0 <br/> meses</span>
-                    <span class="time-unit">0 <br/> horas</span>
-                    <span class="time-unit">0 <br/> segundos</span>
-                </span>
-            </div>
+            <div class="timer-value" id="timer1"></div>
             <div class="timer-content">
                 <p>Nunca fui tão feliz por dar um tchau; por ter olhado o celular do nada e por ter tido a sorte de te encontrar naquele corredor.</p>
                 <hr>
@@ -137,18 +138,7 @@
         
         <div class="timer-box" onclick="toggleBox(this)">
             <div class="timer-title">31/07/2024</div>
-            <div class="timer-value" id="timer2">
-                <span class="time-col">
-                    <span class="time-unit">0 <br/> anos</span>
-                    <span class="time-unit">0 <br/> dias</span>
-                    <span class="time-unit">0 <br/> minutos</span>
-                </span>
-                <span class="time-col">
-                    <span class="time-unit">0 <br/> meses</span>
-                    <span class="time-unit">0 <br/> horas</span>
-                    <span class="time-unit">0 <br/> segundos</span>
-                </span>
-            </div>
+            <div class="timer-value" id="timer2"></div>
             <div class="timer-content">
                 <p>Flores de hibisco, dia conturbado, pipocas na escola que atraíram meu amor a descer do ônibus. Pena que eu fui lerdo demais pra ver a flor antes da Bibi.</p>
                 <hr>
@@ -158,20 +148,9 @@
         
         <div class="timer-box" onclick="toggleBox(this)">
             <div class="timer-title">14/09/2024</div>
-            <div class="timer-value" id="timer3">
-                <span class="time-col">
-                    <span class="time-unit">0 <br/> anos</span>
-                    <span class="time-unit">0 <br/> dias</span>
-                    <span class="time-unit">0 <br/> minutos</span>
-                </span>
-                <span class="time-col">
-                    <span class="time-unit">0 <br/> meses</span>
-                    <span class="time-unit">0 <br/> horas</span>
-                    <span class="time-unit">0 <br/> segundos</span>
-                </span>
-            </div>
+            <div class="timer-value" id="timer3"></div>
             <div class="timer-content">
-                <p>Aliança, RiR e a nossa primeira noite estrelada juntos. Nunca vou esquecer, do nervovismo, vontade e da voz chorosa do sim.</p>
+                <p>Aliança, RiR e a nossa primeira noite estrelada juntos. Nunca vou esquecer, do nervosismo, vontade e da voz chorosa do sim.</p>
                 <hr>
                 <p>Me senti uma princesa e descobri que posso chorar na sua frente. Obrigada pelas vivas faíscas que me mostrou um dia.</p>
             </div>
@@ -179,84 +158,45 @@
     </div>
 
 <script>
-    const startDates = [
-        new Date('2024-06-29T19:07:00'), 
-        new Date('2024-07-31T17:20:00'), 
-        new Date('2024-09-14T21:30:00')   
-    ];
-    
-    const timers = [
-        document.getElementById('timer1'),
-        document.getElementById('timer2'),
-        document.getElementById('timer3')
-    ];
-    
-    function calculateTimeDifference(startDate, currentDate) {
-        let years = currentDate.getFullYear() - startDate.getFullYear();
-        let months = currentDate.getMonth() - startDate.getMonth();
-        let days = currentDate.getDate() - startDate.getDate();
-        let hours = currentDate.getHours() - startDate.getHours();
-        let minutes = currentDate.getMinutes() - startDate.getMinutes();
-        let seconds = currentDate.getSeconds() - startDate.getSeconds();
-        
-        if (seconds < 0) {
-            minutes--;
-            seconds += 60;
-        }
-        
-        if (minutes < 0) {
-            hours--;
-            minutes += 60;
-        }
-
-        if (hours < 0) {
-            days--;
-            hours += 24;
-        }
-
-        if (days < 0) {
-            months--;
-            const tempDate = new Date(currentDate);
-            tempDate.setMonth(tempDate.getMonth(), 0);
-            days += tempDate.getDate();
-        }
-        
-        if (months < 0) {
-            years--;
-            months += 12;
-        }
-        
-        return { years, months, days, hours, minutes, seconds };
-    }
-    
-    function updateTimers() {
-        const now = new Date();
-        
-        for (let i = 0; i < startDates.length; i++) {
-            const { years, months, days, hours, minutes, seconds } = calculateTimeDifference(startDates[i], now);
-            
-            const timer = timers[i];
-            timer.innerHTML = `
-                <span class="time-col">
-                    <span class="time-unit">${years} <br/> ${years !== 1 ? 'anos' : 'ano'}</span>
-                    <span class="time-unit">${days} <br/> ${days !== 1 ? 'dias' : 'dia'}</span>
-                    <span class="time-unit">${minutes}<br/> ${minutes !== 1 ? 'minutos' : 'minuto'}</span>
-                </span>
-                <span class="time-col">
-                    <span class="time-unit">${months} <br/> ${months !== 1 ? 'meses' : 'mês'}</span>
-                    <span class="time-unit">${hours} <br/> ${hours !== 1 ? 'horas' : 'hora'}</span>
-                    <span class="time-unit">${seconds} <br/> ${seconds !== 1 ? 'segundos' : 'segundo'}</span>
-                </span>
-            `;
-        }
-    }
-    
     function toggleBox(box) {
         box.classList.toggle('active');
     }
-    
-    updateTimers();
+
+    function updateTimers() {
+        const now = new Date();
+        const startDates = [
+            new Date('2024-06-29T19:07:00'),
+            new Date('2024-07-31T17:20:00'),
+            new Date('2024-09-14T21:30:00')
+        ];
+        const timers = ['timer1', 'timer2', 'timer3'];
+
+        timers.forEach((id, index) => {
+            const diff = Math.max(0, Math.floor((now - startDates[index]) / 1000));
+            const years = Math.floor(diff / (365 * 24 * 3600));
+            const months = Math.floor((diff % (365 * 24 * 3600)) / (30 * 24 * 3600));
+            const days = Math.floor((diff % (30 * 24 * 3600)) / (24 * 3600));
+            const hours = Math.floor((diff % (24 * 3600)) / 3600);
+            const minutes = Math.floor((diff % 3600) / 60);
+            const seconds = diff % 60;
+
+            document.getElementById(id).innerHTML = `
+                <span class="time-col">
+                    <span class="time-unit">${years} anos</span>
+                    <span class="time-unit">${months} meses</span>
+                    <span class="time-unit">${days} dias</span>
+                </span>
+                <span class="time-col">
+                    <span class="time-unit">${hours} horas</span>
+                    <span class="time-unit">${minutes} minutos</span>
+                    <span class="time-unit">${seconds} segundos</span>
+                </span>
+            `;
+        });
+    }
+
     setInterval(updateTimers, 1000);
+    updateTimers();
 </script>
 </body>
 </html>
