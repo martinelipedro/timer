@@ -51,7 +51,7 @@
         .timer-title {
             font-size: 1.6em;
             font-weight: 600;
-            color: #6e2c00;
+            color: #6e2c00
             text-align: center;
             margin-bottom: 1.5em;
         }
@@ -111,18 +111,18 @@
         }
         
         .timer-box:nth-child(1) {
-            border-left: 5px solid #CB4335;
+            border-left: 5px solid #CB4335
         }
         
         .timer-box:nth-child(2) {
-            border-left: 5px solid #e74c3c;
+            border-left: 5px solid #e74c3c
         }
         
         .timer-box:nth-child(3) {
-            border-left: 5px solid #ec7063;
+            border-left: 5px solid #ec7063
         }
         .timer-box:nth-child(4) {
-            border-left: 5px solid #e64a19;
+            border-left: 5px solid #e64a19
         }
     </style>
 </head>
@@ -131,8 +131,44 @@
     
     <div class="timer-container">
         <div class="timer-box" onclick="toggleBox(this)">
+            <div class="timer-title">29/06/2024</div>
+            <div class="timer-value" id="timer1"></div>
+            <div class="timer-content">
+                <p>Nunca fui tão feliz por dar um tchau; por ter olhado o celular do nada e por ter tido a sorte de te encontrar naquele corredor.</p>
+                <hr>
+                <p>Que bom que eu driblei o mau humor do meu pai pra ir embora e consegui aquele selinho do widmung. Mal posso esperar pela próxima festa junina com fotos e momentos só nossos.</p>
+            </div>
+        </div>
+        
+        <div class="timer-box" onclick="toggleBox(this)">
+            <div class="timer-title">31/07/2024</div>
+            <div class="timer-value" id="timer2"></div>
+            <div class="timer-content">
+                <p>Flores de hibisco, dia conturbado, pipocas na escola que atraíram meu amor a descer do ônibus. Pena que eu fui lerdo demais pra ver a flor antes da Bibi.</p>
+                <hr>
+                <p>Saltar no meio do nada pra te ver (pela pipoca) não foi uma decisão difícil, mas meu coração apertou quando você não me ouviu e pensei ser vergonha do Alpha. Hoje aperta, só que quentinho, a cada flor vermelha que cruza o meu caminho.</p>
+            </div>
+        </div>
+        
+        <div class="timer-box" onclick="toggleBox(this)">
+            <div class="timer-title">14/09/2024</div>
+            <div class="timer-value" id="timer3"></div>
+            <div class="timer-content">
+                <p>Aliança, RiR e a nossa primeira noite estrelada juntos. Nunca vou esquecer, do nervosismo, vontade e da voz chorosa do sim.</p>
+                <hr>
+                <p>Me senti uma princesa e descobri que posso chorar na sua frente. Obrigada pelas vivas faíscas que me mostrou um dia.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="timer-box" onclick="toggleBox(this)">
             <div class="timer-title">16/03/2025</div>
             <div class="timer-value" id="timer4"></div>
+            <div class="timer-content">
+                <p></p>
+                <hr>
+                <p>Meu amor entrou na minha loucura de ir ao cinema com um cooler de 50L pra encher com 10L de pipoca. Foi INCRÍVEL. Mesmo a tensão do filme - eu facilmente sequestraria uma velhinha por massagem.</p>
+            </div>
         </div>
     </div>
 
@@ -140,6 +176,43 @@
     function toggleBox(box) {
         box.classList.toggle('active');
     }
+
+    function updateTimers() {
+        const now = new Date();
+        const startDates = [
+            new Date('2024-06-29T19:07:00'),
+            new Date('2024-07-31T17:20:00'),
+            new Date('2024-09-14T21:30:00'),
+            new Date('2025-03-16T15:30:00')
+        ];
+        const timers = ['timer1', 'timer2', 'timer3', 'timer4'];
+
+        timers.forEach((id, index) => {
+            const diff = Math.max(0, Math.floor((now - startDates[index]) / 1000));
+            const years = Math.floor(diff / (365 * 24 * 3600));
+            const months = Math.floor((diff % (365 * 24 * 3600)) / (30 * 24 * 3600));
+            const days = Math.floor((diff % (30 * 24 * 3600)) / (24 * 3600));
+            const hours = Math.floor((diff % (24 * 3600)) / 3600);
+            const minutes = Math.floor((diff % 3600) / 60);
+            const seconds = diff % 60;
+
+            document.getElementById(id).innerHTML = `
+                <span class="time-col">
+                    <span class="time-unit">${years} anos</span>
+                    <span class="time-unit">${months} meses</span>
+                    <span class="time-unit">${days} dias</span>
+                </span>
+                <span class="time-col">
+                    <span class="time-unit">${hours} horas</span>
+                    <span class="time-unit">${minutes} minutos</span>
+                    <span class="time-unit">${seconds} segundos</span>
+                </span>
+            `;
+        });
+    }
+
+    setInterval(updateTimers, 1000);
+    updateTimers();
 </script>
 </body>
 </html>
