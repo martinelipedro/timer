@@ -381,12 +381,12 @@
 
         timers.forEach((id, index) => {
             const diff = Math.max(0, Math.floor((now - startDates[index]) / 1000));
+            const totalDays = Math.floor(diff / (24 * 3600));
             const years = Math.floor(diff / (365 * 24 * 3600));
             const months = Math.floor((diff % (365 * 24 * 3600)) / (30 * 24 * 3600));
             const days = Math.floor((diff % (30 * 24 * 3600)) / (24 * 3600));
             const hours = Math.floor((diff % (24 * 3600)) / 3600);
             const minutes = Math.floor((diff % 3600) / 60);
-            const seconds = diff % 60;
 
             document.getElementById(id).innerHTML = `
                 <span class="time-col">
@@ -397,7 +397,7 @@
                 <span class="time-col">
                     <span class="time-unit">${hours} horas</span>
                     <span class="time-unit">${minutes} minutos</span>
-                    <span class="time-unit">${seconds} segundos</span>
+                    <span class="time-unit">${totalDays} dias totais</span>
                 </span>
             `;
         });
