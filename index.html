@@ -64,6 +64,14 @@
             justify-content: space-around;
         }
 
+        .timer-since {
+            font-style: italic;
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 8px;
+        }
+        
+
         .time-col {
             display: flex;
             flex-direction: column;
@@ -260,6 +268,7 @@
             <h2 class="area-title">aniversários</h2>
             <div class="timer-box">
                 <div class="timer-title">29/06/2024</div>
+                <div class="timer-since" id="since1"></div>
                 <div class="timer-value" id="timer1"></div>
                 <div class="button-container">
                     <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
@@ -280,6 +289,7 @@
             
             <div class="timer-box">
                 <div class="timer-title">31/07/2024</div>
+                <div class="timer-since" id="since2"></div>
                 <div class="timer-value" id="timer2"></div>
                 <div class="button-container">
                     <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
@@ -300,6 +310,7 @@
             
             <div class="timer-box">
                 <div class="timer-title">14/09/2024</div>
+                <div class="timer-since" id="since3"></div>
                 <div class="timer-value" id="timer3"></div>
                 <div class="button-container">
                     <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
@@ -324,6 +335,7 @@
                  
             <div class="timer-box">
                 <div class="timer-title">05/12/2024</div>
+                <div class="timer-since" id="since6"></div>
                 <div class="timer-value" id="timer6"></div>
                 <div class="button-container">
                     <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
@@ -344,6 +356,7 @@
             
             <div class="timer-box">
                 <div class="timer-title">04/02/2025</div>
+                <div class="timer-since" id="since5"></div>
                 <div class="timer-value" id="timer5"></div>
                 <div class="button-container">
                     <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
@@ -364,6 +377,7 @@
             
             <div class="timer-box">
                 <div class="timer-title">16/03/2025</div>
+                <div class="timer-since" id="since4"></div>
                 <div class="timer-value" id="timer4"></div>
                 <div class="button-container">
                     <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
@@ -419,6 +433,15 @@
             new Date('2024-12-05T15:30:00')
         ];
         const timers = ['timer1', 'timer2', 'timer3', 'timer4', 'timer5', 'timer6'];
+        const sinces = ['since1', 'since2', 'since3', 'since4', 'since5', 'since6'];
+        const memories = [
+            'o nosso primeiro beijo',
+            'o primeiro pedido na praça',
+            'a nossa aliança',
+            'o dia da pipoca',
+            'o implanon',
+            'a primeira vez'
+        ];
 
         timers.forEach((id, index) => {
             const diff = Math.max(0, Math.floor((now - startDates[index]) / 1000));
@@ -442,6 +465,10 @@
                     <span class="time-unit">${seconds} segundos</span>
                 </span>
             `;
+            const sinceElement = document.getElementById(sinces[index]);
+            if (sinceElement) {
+                sinceElement.textContent = `faz ${totalDays} dias desde ${eventos[index]}.`;
+            }            
         });
     }
 
