@@ -334,6 +334,27 @@
             <h2 class="area-title">pra lembrar com carinho</h2>
                  
             <div class="timer-box">
+                <div class="timer-title">15/09/2024</div>
+                <div class="timer-since" id="since7"></div>
+                <div class="timer-value" id="timer7"></div>
+                <div class="button-container">
+                    <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
+                    <button class="content-button" onclick="toggleContent(this, 'photo')">fotos</button>
+                </div>
+                <div class="timer-content">
+                    <p></p>
+                    <hr>
+                    <p>Foi o primeiro (e único) festival da minha vida. Eu tinha uma aliança, um namorado e uma calça arrastão da qual às vezes me arrependo. Foi desse dia que nasceu uma das minhas fotos preferidas, e vou sempre lembrar com carinho. Seize the day...</p>
+                </div>
+                <div class="photo-content">
+                    <div class="photo-gallery">
+                        <img src="">
+                        <img src="">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timer-box">
                 <div class="timer-title">05/12/2024</div>
                 <div class="timer-since" id="since6"></div>
                 <div class="timer-value" id="timer6"></div>
@@ -345,6 +366,27 @@
                     <p></p>
                     <hr>
                     <p>Eu sabia que ia chorar. Sempre achei que fosse doer. Só não sabia que seria com o amor da minha vida, pronto pra me abraçar, cuidar de mim e descobrir algo tão novo juntinhos. Eu te amo, Peco.</p>
+                </div>
+                <div class="photo-content">
+                    <div class="photo-gallery">
+                        <img src="">
+                        <img src="">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="timer-box">
+                <div class="timer-title">02/02/2025</div>
+                <div class="timer-since" id="since8"></div>
+                <div class="timer-value" id="timer8"></div>
+                <div class="button-container">
+                    <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
+                    <button class="content-button" onclick="toggleContent(this, 'photo')">fotos</button>
+                </div>
+                <div class="timer-content">
+                    <p></p>
+                    <hr>
+                    <p></p>
                 </div>
                 <div class="photo-content">
                     <div class="photo-gallery">
@@ -430,17 +472,21 @@
             new Date('2024-09-14T21:30:00'),
             new Date('2025-03-16T15:30:00'),
             new Date('2025-02-04T11:05:00'),
-            new Date('2024-12-05T15:30:00')
+            new Date('2024-12-05T15:30:00'),
+            new Date('2025-09-15T23:35:00')
+            new Date('2025-02-02T13:35:00')
         ];
-        const timers = ['timer1', 'timer2', 'timer3', 'timer4', 'timer5', 'timer6'];
-        const sinces = ['since1', 'since2', 'since3', 'since4', 'since5', 'since6'];
+        const timers = ['timer1', 'timer2', 'timer3', 'timer4', 'timer5', 'timer6', 'timer7', 'timer8'];
+        const sinces = ['since1', 'since2', 'since3', 'since4', 'since5', 'since6', 'since7', 'since8'];
         const memories = [
             'o nosso primeiro beijo',
             'o primeiro pedido na praça',
             'a nossa aliança',
             'o dia da pipoca',
             'o implanon',
-            'a primeira vez'
+            'a primeira vez',
+            'o RiR'
+            'que almoçou com os meus pais'
         ];
 
         timers.forEach((id, index) => {
