@@ -322,7 +322,42 @@
         <div class="area2 area">
         <h2 class="area-title">pra lembrar com carinho</h2>
         
-
+        <div class="timer-box">
+            <div class="timer-title">05/12/2024</div>
+            <div class="timer-value" id="timer6"></div>
+            <div class="button-container">
+                <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
+                <button class="content-button" onclick="toggleContent(this, 'photo')">fotos</button>
+            </div>
+            <div class="timer-content">
+                <p></p>
+                <hr>
+                <p>Eu sabia que ia chorar. Sempre achei que fosse doer. Só não sabia que seria com o amor da minha vida, pronto pra me abraçar, cuidar de mim e descobrir algo tão novo juntinhos. Eu te amo, Peco.</p>
+            </div>
+            <div class="photo-content">
+                <div class="photo-gallery">
+                    <img src="">
+                    <img src="">
+                </div>
+            </div>
+        <div class="timer-box">
+            <div class="timer-title">04/02/2025</div>
+            <div class="timer-value" id="timer5"></div>
+            <div class="button-container">
+                <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
+                <button class="content-button" onclick="toggleContent(this, 'photo')">fotos</button>
+            </div>
+            <div class="timer-content">
+                <p></p>
+                <hr>
+                <p>Doeu por uma semana? Sim. Eu vou sangrar pra sempre agora? Provavelmente. Mas SEM BEBÊ ANTES DA HORA, isso parece um grande passo pra nós dois, como um primeiro grande objetivo que planejamos e cumprimos juntinhos. Obrigada por ser meu parceirinho de vida.</p>
+            </div>
+            <div class="photo-content">
+                <div class="photo-gallery">
+                    <img src="">
+                    <img src="">
+                </div>
+            </div>
         <div class="timer-box">
             <div class="timer-title">16/03/2025</div>
             <div class="timer-value" id="timer4"></div>
@@ -375,9 +410,11 @@
             new Date('2024-06-29T19:07:00'),
             new Date('2024-07-31T17:20:00'),
             new Date('2024-09-14T21:30:00'),
-            new Date('2025-03-16T15:30:00')
+            new Date('2025-03-16T15:30:00'),
+            new Date('2025-02-04T11:05:00'),
+            new Date('2024-12-05T15:30:00')
         ];
-        const timers = ['timer1', 'timer2', 'timer3', 'timer4'];
+        const timers = ['timer1', 'timer2', 'timer3', 'timer4', 'timer5', 'timer6'];
 
         timers.forEach((id, index) => {
             const diff = Math.max(0, Math.floor((now - startDates[index]) / 1000));
@@ -387,6 +424,7 @@
             const days = Math.floor((diff % (30 * 24 * 3600)) / (24 * 3600));
             const hours = Math.floor((diff % (24 * 3600)) / 3600);
             const minutes = Math.floor((diff % 3600) / 60);
+            const seconds = diff % 60;
 
             document.getElementById(id).innerHTML = `
                 <span class="time-col">
@@ -397,7 +435,7 @@
                 <span class="time-col">
                     <span class="time-unit">${hours} horas</span>
                     <span class="time-unit">${minutes} minutos</span>
-                    <span class="time-unit">${totalDays} dias totais</span>
+                    <span class="time-unit">${seconds} segundos</span>
                 </span>
             `;
         });
