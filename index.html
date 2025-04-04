@@ -75,7 +75,7 @@
         }
 
         .timer-since .days-count {
-            color: #e74c3c; 
+            color: #a04000; 
             font-weight: bold; 
         }
         
@@ -342,7 +342,35 @@
 
         <div class="area2 area">
             <h2 class="area-title">pra lembrar com carinho</h2>
-                 
+
+            <div class="timer-box">
+                <div class="timer-title">06/01/2024</div>
+                <div class="timer-since" id="since10"></div>
+                <div class="timer-value" id="timer10"></div>
+                <div class="button-container">
+                    <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
+                </div>
+                <div class="timer-content">
+                    <p></p>
+                    <hr>
+                    <p>Kick-off da frc, a primeira vez que te vi em 2024. Será que o Paulinho ainda acha que eu te odeio? Foi mal pelo tapa, você mereceu.</p>
+                </div>
+            </div>
+
+            <div class="timer-box">
+                <div class="timer-title">14/04/2024</div>
+                <div class="timer-since" id="since9"></div>
+                <div class="timer-value" id="timer9"></div>
+                <div class="button-container">
+                    <button class="content-button" onclick="toggleContent(this, 'text')">memórias</button>
+                </div>
+                <div class="timer-content">
+                    <p></p>
+                    <hr>
+                    <p>Foi o dia em que eu me amancipei, com os meus pais em Singapura numa vídeo-chamada com o e-notariado. Passei o dia sem tempo pra comer e dei uma de Gustavo no rodízio do Habib's, bem na sua frente (ai). Você pegou na minha mão, eu derrubei o pc e percebi como seus olhos rindo são lindos.</p>
+                </div>
+            </div>
+
             <div class="timer-box">
                 <div class="timer-title">15/09/2024</div>
                 <div class="timer-since" id="since7"></div>
@@ -398,7 +426,7 @@
                 <div class="timer-content">
                     <p></p>
                     <hr>
-                    <p></p>
+                    <p>Que doideira que tenha demorado tanto pra 'conhecer' os sogros, né, moi? Fico muitooo feliz que vocês se deem bem, eles gostam de ti. Foi também a primeira vez que você me comprou uma flor.</p>
                 </div>
                 <div class="photo-content">
                     <div class="photo-gallery">
@@ -485,20 +513,24 @@
         new Date('2025-03-16T15:30:00'),
         new Date('2025-02-04T11:05:00'),
         new Date('2024-12-05T15:30:00'),
-        new Date('2024-09-15T23:35:00'),  // Fixed year (was 2025)
+        new Date('2024-09-15T23:35:00'),  
         new Date('2025-02-02T13:35:00')
+        new Date('2024-04-14T19:40:00'),  
+        new Date('2024-01-06T10:20:00')
     ];
-    const timers = ['timer1', 'timer2', 'timer3', 'timer4', 'timer5', 'timer6', 'timer7', 'timer8'];
-    const sinces = ['since1', 'since2', 'since3', 'since4', 'since5', 'since6', 'since7', 'since8'];
+    const timers = ['timer1', 'timer2', 'timer3', 'timer4', 'timer5', 'timer6', 'timer7', 'timer8', 'timer9', 'timer10'];
+    const sinces = ['since1', 'since2', 'since3', 'since4', 'since5', 'since6', 'since7', 'since8', 'since9', 'since10'];
     const events = [
         'o nosso primeiro beijo',
         'o primeiro pedido na praça',
-        'a nossa aliança',
+        'que começamos a usar aliança',
         'o dia da pipoca',
         'o implanon',
         'a primeira vez',
         'o RiR',
-        'que almoçou com os meus pais'
+        'a primeira vez que o Peco almoçou com os sogros'
+        'que a Bibi quis beijar o Peco pela primeira vez'
+        'o kick-off da First'
     ];
 
     timers.forEach((id, index) => {
