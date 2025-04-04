@@ -69,8 +69,14 @@
             color: #777;
             margin-bottom: 8px;
             text-align: center;
+            margin-top: 0.2em;
             margin-bottom: 2em;
 
+        }
+
+        .timer-since .days-count {
+            color: #e74c3c; 
+            font-weight: bold; 
         }
         
 
@@ -528,7 +534,7 @@
         const totalDays = Math.floor(diff / (24 * 3600));
         const sinceElement = document.getElementById(sinces[index]);
         if (sinceElement) {
-            sinceElement.textContent = `Faz ${totalDays} dias desde ${events[index]}.`;
+            sinceElement.innerHTML = `Faz <span class="days-count">${totalDays}</span> dias desde ${events[index]}.`;
         }
     });
 }
