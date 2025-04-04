@@ -52,7 +52,6 @@
             font-weight: 600;
             color: #6e2c00; /* Esse altera a cor do titulo do cartão */
             text-align: center;
-            margin-bottom: 1.5em;
         }
         
         .timer-value {
@@ -69,6 +68,9 @@
             font-size: 0.9em;
             color: #777;
             margin-bottom: 8px;
+            text-align: center;
+            margin-bottom: 2em;
+
         }
         
 
@@ -469,58 +471,67 @@
     }
 
     function updateTimers() {
-        const now = new Date();
-        const startDates = [
-            new Date('2024-06-29T19:07:00'),
-            new Date('2024-07-31T17:20:00'),
-            new Date('2024-09-14T21:30:00'),
-            new Date('2025-03-16T15:30:00'),
-            new Date('2025-02-04T11:05:00'),
-            new Date('2024-12-05T15:30:00'),
-            new Date('2025-09-15T23:35:00'),
-            new Date('2025-02-02T13:35:00')
-        ];
-        const timers = ['timer1', 'timer2', 'timer3', 'timer4', 'timer5', 'timer6', 'timer7', 'timer8'];
-        const sinces = ['since1', 'since2', 'since3', 'since4', 'since5', 'since6', 'since7', 'since8'];
-        const memories = [
-            'o nosso primeiro beijo',
-            'o primeiro pedido na praça',
-            'a nossa aliança',
-            'o dia da pipoca',
-            'o implanon',
-            'a primeira vez',
-            'o RiR',
-            'que almoçou com os meus pais'
-        ];
+    const now = new Date();
+    const startDates = [
+        new Date('2024-06-29T19:07:00'),
+        new Date('2024-07-31T17:20:00'),
+        new Date('2024-09-14T21:30:00'),
+        new Date('2025-03-16T15:30:00'),
+        new Date('2025-02-04T11:05:00'),
+        new Date('2024-12-05T15:30:00'),
+        new Date('2024-09-15T23:35:00'),  // Fixed year (was 2025)
+        new Date('2025-02-02T13:35:00')
+    ];
+    const timers = ['timer1', 'timer2', 'timer3', 'timer4', 'timer5', 'timer6', 'timer7', 'timer8'];
+    const sinces = ['since1', 'since2', 'since3', 'since4', 'since5', 'since6', 'since7', 'since8'];
+    const events = [
+        'o nosso primeiro beijo',
+        'o primeiro pedido na praça',
+        'a nossa aliança',
+        'o dia da pipoca',
+        'o implanon',
+        'a primeira vez',
+        'o RiR',
+        'que almoçou com os meus pais'
+    ];
 
-        timers.forEach((id, index) => {
-            const diff = Math.max(0, Math.floor((now - startDates[index]) / 1000));
-            const totalDays = Math.floor(diff / (24 * 3600));
-            const years = Math.floor(diff / (365 * 24 * 3600));
-            const months = Math.floor((diff % (365 * 24 * 3600)) / (30 * 24 * 3600));
-            const days = Math.floor((diff % (30 * 24 * 3600)) / (24 * 3600));
-            const hours = Math.floor((diff % (24 * 3600)) / 3600);
-            const minutes = Math.floor((diff % 3600) / 60);
-            const seconds = diff % 60;
+    timers.forEach((id, index) => {
+        const diff = Math.max(0, Math.floor((now - startDates[index]) / 1000));
+        
+        // Calculate time units
+        const years = Math.floor(diff / (365 * 24 * 3600));
+        const remainingAfterYears = diff % (365 * 24 * 3600);
+        const months = Math.floor(remainingAfterYears / (30 * 24 * 3600));
+        const remainingAfterMonths = remainingAfterYears % (30 * 24 * 3600);
+        const days = Math.floor(remainingAfterMonths / (24 * 3600));
+        const remainingAfterDays = remainingAfterMonths % (24 * 3600);
+        const hours = Math.floor(remainingAfterDays / 3600);
+        const remainingAfterHours = remainingAfterDays % 3600;
+        const minutes = Math.floor(remainingAfterHours / 60);
+        const seconds = remainingAfterHours % 60;
 
-            document.getElementById(id).innerHTML = `
-                <span class="time-col">
-                    <span class="time-unit">${years} anos</span>
-                    <span class="time-unit">${days} dias</span>
-                    <span class="time-unit">${minutes} minutos</span>
-                </span>
-                <span class="time-col">
-                    <span class="time-unit">${months} meses</span>
-                    <span class="time-unit">${hours} horas</span>
-                    <span class="time-unit">${seconds} segundos</span>
-                </span>
-            `;
-            const sinceElement = document.getElementById(sinces[index]);
-            if (sinceElement) {
-                sinceElement.textContent = `faz ${totalDays} dias desde ${eventos[index]}.`;
-            }            
-        });
-    }
+        // Update timer display
+        document.getElementById(id).innerHTML = `
+            <span class="time-col">
+                <span class="time-unit">${years} anos</span>
+                <span class="time-unit">${days} dias</span>
+                <span class="time-unit">${minutes} minutos</span>
+            </span>
+            <span class="time-col">
+                <span class="time-unit">${months} meses</span>
+                <span class="time-unit">${hours} horas</span>
+                <span class="time-unit">${seconds} segundos</span>
+            </span>
+        `;
+        
+        // Update "since" message
+        const totalDays = Math.floor(diff / (24 * 3600));
+        const sinceElement = document.getElementById(sinces[index]);
+        if (sinceElement) {
+            sinceElement.textContent = `Faz ${totalDays} dias desde ${events[index]}.`;
+        }
+    });
+}
 
     document.addEventListener('DOMContentLoaded', function() {
         const galleryImages = document.querySelectorAll('.photo-gallery img');
