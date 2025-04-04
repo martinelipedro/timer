@@ -551,14 +551,14 @@
         // Update timer display
         document.getElementById(id).innerHTML = `
             <span class="time-col">
-                <span class="time-unit">${years} anos</span>
-                <span class="time-unit">${days} dias</span>
-                <span class="time-unit">${minutes} minutos</span>
+                <span class="time-unit">${years} ${years != 1 ? "anos"  : "ano"}</span>
+                <span class="time-unit">${days} ${days != 1 ? "dias"  : "dia"}</span>
+                <span class="time-unit">${minutes} ${minutes != 1 ? "minutos"  : "minuto"}</span>
             </span>
             <span class="time-col">
-                <span class="time-unit">${months} meses</span>
-                <span class="time-unit">${hours} horas</span>
-                <span class="time-unit">${seconds} segundos</span>
+                <span class="time-unit">${months} ${months != 1 ? "meses"  : "mês"}</span>
+                <span class="time-unit">${hours} ${hours != 1 ? "horas"  : "hora"}</span>
+                <span class="time-unit">${seconds} ${seconds != 1 ? "segundos"  : "segundo"}</span>
             </span>
         `;
         
