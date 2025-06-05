@@ -583,6 +583,7 @@
               passo pra nós dois, como um primeiro grande objetivo que
               planejamos e cumprimos juntinhos. Obrigada por ser meu parceirinho
               de vida.
+              P.S.: passei dois meses sem sangrar e surtei achando que era um T.
             </p>
           </div>
           <div class="photo-content">
@@ -624,6 +625,39 @@
             <div class="photo-gallery">
               <img src="./images/161.jpg" />
               <img src="./images/162.jpg" />
+            </div>
+          </div>
+        </div>
+
+        <div class="timer-box">
+          <div class="timer-title">30/05 a 01/06/2025</div>
+          <div class="timer-since" id="since11"></div>
+          <div class="timer-value" id="timer11"></div>
+          <div class="button-container">
+            <button
+              class="content-button"
+              onclick="toggleContent(this, 'text')"
+            >
+              memórias
+            </button>
+            <button
+              class="content-button"
+              onclick="toggleContent(this, 'photo')"
+            >
+              fotos
+            </button>
+          </div>
+          <div class="timer-content">
+            <p></p>
+            <hr />
+            <p>
+              Já fazia um tempo que eu queria participar de um hackathon. Programação me assusta, é verdade, mas te parece tão natural que eu queria conhecer um cadinho mais desse seu mundo. Não vencemos, os critérios não faziam sentido e eu me estressei um tanto com o prazo e a sua timidez pra me beijar em público. Apesar da desorganização esperada de uma primeira edição, foi bem incrível viver isso ao seu lado e te ver convivendo por tempo recorde com a minha família. Quero que faça parte dela, muito em breve.
+            </p>
+          </div>
+          <div class="photo-content">
+            <div class="photo-gallery">
+              <img src="" />
+              <img src="" />
             </div>
           </div>
         </div>
@@ -711,6 +745,7 @@
           new Date("2025-02-02T13:35:00"),
           new Date("2024-04-14T19:40:00"),
           new Date("2024-01-06T10:20:00"),
+          new Date("2025-05-06T17:30:00"),
         ];
         const timers = [
           "timer1",
@@ -723,6 +758,7 @@
           "timer8",
           "timer9",
           "timer10",
+          "timer11",
         ];
         const sinces = [
           "since1",
@@ -735,6 +771,7 @@
           "since8",
           "since9",
           "since10",
+          "since11",
         ];
         const events = [
           "o nosso primeiro beijo",
@@ -745,8 +782,9 @@
           "a primeira vez",
           "o RiR",
           "a primeira vez que o Peco almoçou com os sogros",
-          "que a Bibi quis beijar o Peco pela primeira vez",
+          "dedos se encostando não tão sem querer",
           "o kick-off da First",
+          "nosso primeiro hackathon",
         ];
 
         timers.forEach((id, index) => {
